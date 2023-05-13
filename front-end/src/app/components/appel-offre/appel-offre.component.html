@@ -1,0 +1,154 @@
+
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+
+
+
+<div class="content-wrapper">
+   <div id="top"></div>
+   <div *ngIf="messageAdd" class="alert alert-success">{{ messageAdd }}</div>
+   <div *ngIf="messageEdit" class="alert alert-info">{{ messageEdit }}</div>
+   <div *ngIf="messageDelete" class="alert alert-danger">{{ messageDelete }}</div>
+
+   <div class="card">
+      <div class="card-header">               
+         <h5 class="card-header-text">Consulter</h5><tr></tr><code>Appels d'offre</code>
+      </div>
+      <div class="card-block">
+         <div class="row">
+            <div class="col-sm-12 table-responsive">
+               <table class="table table-hover">
+                  <thead>
+                     <tr>
+                        <th>#</th>
+                        <th>Date Debut</th>
+                        <th>Date Fin</th>
+                        <th>Informations</th>
+                     </tr>
+                  </thead>
+      
+                  <tbody>
+                     <tr *ngFor="let appelOffre of appelOffres">
+                        <td>{{ appelOffre.id }}</td>
+                        <td>{{ appelOffre.dateDebut}}</td>
+                        <td>{{ appelOffre.dateFin}}</td>
+      
+                        <td> <button routerLink="/appelOffre/{{appelOffre.id}}"class="btn btn-success waves-effect waves-light" >Plus d'informations</button></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>  
+
+
+
+
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                           BESOINS
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -->
+
+ <div class="card">
+   <div class="card-header">               
+      <h5 class="card-header-text">Ajouter</h5><tr></tr><code>Un appel d'offre</code>
+</div>
+ <div class="card-block">
+   <div _ngcontent-gab-c19="" class="card-header"><h5 _ngcontent-gab-c19="" class="card-header-text"></h5><p _ngcontent-gab-c19="">Besoins Ordinateurs</p></div>
+   <div class="row">
+      <div class="col-sm-12 table-responsive">
+         <table class="table table-hover">
+            <thead>
+               <tr>
+                  <th>Sélectionner</th>
+                  <th>CPU</th>
+                  <th>DISQUE DUR</th>
+                  <th>RAM</th>
+                  <th>MARQUE</th>
+                  <th>ECRAN</th>
+               </tr>
+            </thead>
+
+            <tbody>
+               <tr *ngFor="let ordinateur of besoinsOrdinateur">
+             <td><input type="checkbox" name="ordinateurs" [value]="ordinateur.id" (change)="onSelectBesoin(ordinateur.id)"></td> 
+                  <td>{{ ordinateur.cpu }}</td>
+                  <td>{{ ordinateur.disqueDur}}</td>
+                  <td>{{ ordinateur.ram}}</td>
+                  <td>{{ ordinateur.marque}}</td>
+                  <td>{{ ordinateur.ecran}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-block">
+   <div _ngcontent-gab-c19="" class="card-header"><h5 _ngcontent-gab-c19="" class="card-header-text"></h5><p _ngcontent-gab-c19="">Besoins Imprimantes</p></div>
+   <div class="row">
+      <div class="col-sm-12 table-responsive">
+         <table class="table table-hover">
+            <thead>
+               <tr>
+                  <th>Sélectionner</th>
+                  <th>VITESSE</th>
+                  <th>RESOLUTION</th>
+                  <th>MARQUE</th>
+               </tr>
+            </thead>
+
+            <tbody>
+               <tr *ngFor="let imprimante of besoinsImprimante">
+               <td><input type="checkbox" name="imprimantes" [value]="imprimante.id" (change)="onSelectBesoin(imprimante.id)"></td>   
+                  <td>{{ imprimante.vitesse }}</td>
+                  <td>{{ imprimante.resolution}}</td>
+                  <td>{{ imprimante.marque}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+</div>
+
+<div class="card">
+   <div class="card-block">
+<div class="form-group">
+   <label>Date de début:</label>
+   <input type="date" class="form-control" [(ngModel)]="dateDebut">
+</div>
+
+<div class="form-group">
+   <label>Date de fin:</label>
+   <input type="date" class="form-control" [(ngModel)]="dateFin">
+</div>
+
+<button type="button" class="btn btn-inverse-info float-right waves-effect" (click)="creerAppelOffre()">Ajouter l'appel d'offre</button>
+</div>
+</div>
+
+
+
+<!-- 
+<h3>Besoins sélectionnés :</h3>
+<ul>
+<li *ngFor="let id of selectedBesoinIds">
+   {{ id }}
+</li>
+</ul> -->
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,114 @@
+<aside class="main-sidebar hidden-print ">
+  <section class="sidebar" id="sidebar-scroll">
+    <!-- Sidebar Menu-->
+    <ul class="sidebar-menu">
+      <li class="active treeview">
+        <a class="waves-effect waves-dark" href="index.html">
+          <i class="icon-speedometer"></i><span> Acceuil</span>
+        </a>
+      </li>
+    
+
+
+      <li class="treeview" *ngIf=" role=='TECHNICIEN'">
+        <a class="waves-effect waves-dark" routerLink="/panne">
+          <i class="icon-list"></i><span> Pannes</span>
+        </a>
+        <a class="waves-effect waves-dark" routerLink="/constat">
+          <i class="icon-list"></i><span> Constats</span>
+        </a>
+        </li>
+        
+
+
+        <li class="treeview" *ngIf=" role=='FOURNISSEUR'">
+          <a class="waves-effect waves-dark" routerLink="/appelOffreFournisseur">
+            <i class="icon-list"></i><span> Appels d'Offre</span>
+          </a>
+          <a class="waves-effect waves-dark" routerLink="/proposition/fournisseur">
+            <i class="icon-list"></i><span> Propositions</span>
+          </a>
+          </li>
+
+
+          <li class="treeview" *ngIf=" role=='ENSEIGNANT'">
+            <a class="waves-effect waves-dark" routerLink="/besoin">
+              <i class="icon-list"></i><span> Besoins</span>
+            </a>
+            <a class="waves-effect waves-dark" routerLink="/affectationEns">
+              <i class="icon-list"></i><span> Ressources</span>
+            </a>
+            <a class="waves-effect waves-dark" routerLink="/panneEns">
+              <i class="icon-list"></i><span> Pannes signalés</span>
+            </a>
+            </li>
+
+
+            <li class="treeview" *ngIf=" role=='RESPONSABLE'">
+              <a class="waves-effect waves-dark" routerLink="/besoinResp">
+                <i class="icon-list"></i><span> Besoins reçus</span>
+              </a>
+              <a class="waves-effect waves-dark" routerLink="/appelOffre">
+                <i class="icon-list"></i><span> Appels d'Offres</span>
+              </a>
+              <a class="waves-effect waves-dark" routerLink="/proposition">
+                <i class="icon-list"></i><span> Propositions</span>
+              </a>
+              <a class="waves-effect waves-dark" routerLink="/livraison">
+                <i class="icon-list"></i><span> Ressources livrées</span>
+              </a>
+              <a class="waves-effect waves-dark" routerLink="/ressource">
+                <i class="icon-list"></i><span> Ressources</span>
+              </a>
+               
+              <a class="waves-effect waves-dark" routerLink="/affectation">
+                <i class="icon-list"></i><span> Affectations</span>
+              </a>
+              <a class="waves-effect waves-dark" routerLink="/utilisateurs">
+                <i class="icon-list"></i><span> Utilisateurs</span>
+              </a>
+              
+              
+              <a class="waves-effect waves-dark" routerLink="/constatRespo">
+                <i class="icon-list"></i><span> Constats envoyés</span>
+              </a>
+
+
+              
+             
+
+
+
+
+
+
+              </li>
+
+              <li class="treeview" *ngIf=" role=='CHEF_DEPARTEMENT'">
+            
+                <a class="waves-effect waves-dark" routerLink="/utilisateurs">
+                  <i class="icon-list"></i><span> Enseignants</span>
+                </a>
+                <a class="waves-effect waves-dark" routerLink="/besoinAff">
+                  <i class="icon-list"></i><span> Besoins Departement</span>
+                </a>
+                
+                
+                </li>
+  
+        
+
+
+      <li *ngIf="role=='CHEF_DEPARTEMENT' "class="treeview">
+
+      </li>
+
+      
+    </ul>
+  </section>
+</aside>
+<router-outlet></router-outlet>
+
+
+
+

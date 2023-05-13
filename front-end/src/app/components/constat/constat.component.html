@@ -1,0 +1,152 @@
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+<div class="content-wrapper"  id="main-container">
+   <div class="container-fluid">
+<div class="card">
+   
+        <div class="card-header">
+
+         <div *ngIf="messageAdd" class="alert alert-success">{{ messageAdd }}</div>
+         <div *ngIf="messageEdit" class="alert alert-info">{{ messageEdit }}</div>
+         <div *ngIf="messageDelete" class="alert alert-danger">{{ messageDelete }}</div>
+           <h5 class="card-header-text">Liste des constats</h5>
+        </div>
+        <div class="card-block">
+           <div class="row">
+              <div class="col-sm-12 table-responsive">
+                 <table class="table">
+                    <thead>
+                       <tr>
+                          <th>#</th>
+                      
+                          <th>Explication</th>
+                          <th>date Apparition</th>
+                          <th>Fréquence</th>
+                          <th>Ordre</th>
+                          <th>Envoyer</th>
+                          <th>Modifier</th>
+                          <th>Supprimer</th>
+                 
+    
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr *ngFor="let constat of constats">
+                          <td > {{constat.id}} </td>
+                   
+                          <td >  {{constat.explication}} </td>
+                          <td >  {{constat.dateApparition}} </td>
+                          <td >  {{constat.frequence}} </td>
+                          <td >  {{constat.ordre}} </td>
+                          <td> <button (click)="onSend(constat.id)" class="btn waves-effect waves-light" [ngClass]="constat.send ? 'btn-success' : 'btn-danger'" type="submit"  >{{ constat.send ? 'Constat envoyé' : 'Envoyer constat' }}</button></td>
+                          <td> <button (click)="onUpdateConstat(constat.id,'update')" type="submit" class="btn btn-success waves-effect waves-light" >Modifier</button></td>
+                          <td> <button (click)="onDeleteConstat(constat.id)" type="submit" class="btn btn-danger waves-effect waves-light" >Supprimer</button></td>
+                        
+
+                       </tr>
+                      
+    
+                    </tbody>
+                 </table>
+              </div>
+     
+</div>
+
+
+<!-- <div class="card-header">
+    <h5 class="card-header-text">Ajouter Constat</h5>
+
+ </div>
+        <form #constatForm="ngForm" (ngSubmit)="onSubmit()">
+         
+            <div class="form-group row">
+                <label for="exampleTextarea" class="form-control-label">Explication</label>
+                    <textarea class="form-control" id="explication" rows="4"[(ngModel)]="constat.explication" name="explication" ></textarea>
+            </div>
+            <div class="form-group row">
+                <label for="example-datetime-local-input" class="col-xs-2 col-form-label form-control-label">Date apparition</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dateApp" [(ngModel)]="constat.dateApparition" name="dateApp" >
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="example-datetime-local-input" class="col-xs-2 col-form-label form-control-label">Frequence</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  id="Frequence" [(ngModel)]="constat.frequence" name="frequence" >
+                </div>
+            </div>
+
+       <input [(ngModel)]="constat.panne.id"  type="hidden" value={{panne_id}} name="panne_id"> 
+            <div class="form-group row">
+                <label for="example-datetime-local-input" class="col-xs-2 col-form-label form-control-label">Ordre</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  id="Ordre" [(ngModel)]="constat.ordre" name="ordre" >
+                </div>
+            </div>
+   
+         
+           
+               
+   
+        
+            <button type="submit" class="btn btn-success waves-effect waves-light">Submit
+            </button>
+ 
+        </form> -->
+
+        </div>
+        
+     </div>
+      
+
+
+</div>
+
+<div class="modal fade" id="updateConstatModal" tabindex="-1" role="dialog" aria-labelledby="updateConstatModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="updateConstatModalLabel">Modifier Constat</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #updateConstat="ngForm" (ngSubmit)="onUpdate(updateConstat)">
+            <div class="form-group">
+              <label for="codeBarre">Explication</label>
+              <input type="text" class="form-control" [(ngModel)]="constat.explication" name="explicationC" id="explicationC" placeholder="explication" required>
+           </div>
+           <div class="form-group">
+              <label for="dateLivraison">Date d'Apparition'</label>
+              <input class="form-control" type="date" id="dateApp" [(ngModel)]="constat.dateApparition" name="dateApp">
+           </div>
+           <div class="form-group">
+            <label for="codeBarre">Fréquence</label>
+            <input type="text" class="form-control" id="Frequence" [(ngModel)]="constat.frequence" name="frequence" required>
+         </div>
+         <div class="form-group">
+            <label for="codeBarre">Ordre</label>
+            <input type="text" class="form-control" id="Ordre" [(ngModel)]="constat.ordre" name="ordre" placeholder="ordre" required>
+         </div>
+           
+           <div class="modal-footer">
+              <button [disabled]="updateConstat.invalid" type="submit" class="btn btn-primary" >Enregistrer</button>
+           </div>
+           </form>
+        </div>
+     </div>
+   </div>
+</div>
+
+
+
+
+
+   
+
+
+
+

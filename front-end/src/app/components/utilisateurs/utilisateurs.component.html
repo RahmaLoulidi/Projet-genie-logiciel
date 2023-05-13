@@ -1,0 +1,110 @@
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<div class="content-wrapper" id="main-container">
+
+  <!-- Container-fluid starts -->
+  <!-- Main content starts -->
+  <div class="container-fluid"  >
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-header-text">Liste Utilisateurs </h5>
+        <a class="btn  btn-primary"  (click)="openDialog()"  role="button"><i class="fa fa-plus"></i></a>
+      </div>
+      <div class="card-block">
+        <div class="row">
+          <div class="col-sm-12 table-responsive">
+         
+
+            <table class="table"  >
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom Utilisatur</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Departement</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let us of users"
+
+                class="table-active">
+
+
+                <td *ngIf="loadUser().role == 'RESPONSABLE'">{{us.id}}</td>
+                <td *ngIf="loadUser().role == 'RESPONSABLE'">{{us.username}}</td>
+                <td *ngIf="loadUser().role == 'RESPONSABLE'">{{us.email}}</td>
+                <td *ngIf="loadUser().role == 'RESPONSABLE'">{{us.roles[0].name}}</td>
+                <td *ngIf="loadUser().role == 'RESPONSABLE' && us.departement ">{{us.departement.nomDepartement}}</td>
+                <td *ngIf="loadUser().role == 'RESPONSABLE' && !us.departement"></td>
+
+                <td *ngIf="loadUser().role == 'CHEF_DEPARTEMENT' &&  us.departement.id === loadUser().departement">{{us.id}}</td>
+                <td *ngIf="loadUser().role == 'CHEF_DEPARTEMENT' &&  us.departement.id === loadUser().departement">{{us.username}}</td>
+                <td *ngIf="loadUser().role == 'CHEF_DEPARTEMENT' &&  us.departement.id === loadUser().departement">{{us.email}}</td>
+
+                <td *ngIf="loadUser().role == 'CHEF_DEPARTEMENT' &&  us.departement.id === loadUser().departement">{{us.roles[0].name}}</td>
+                <td *ngIf="loadUser().role == 'CHEF_DEPARTEMENT' && us.departement.id === loadUser().departement">{{ us.departement.nomDepartement}}</td>
+
+
+
+              </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal" *ngIf="showDialog"   tabindex="-1" role="dialog"  aria-labelledby="addUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addUserModalLabel">Ajouter Utilisateur</h5>
+        <button type="button" class="close" (click)="closeDialog()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addRessource="" >
+          <div class="form-group">
+            <label >Nom Utilisateur</label>
+            <input type="text" class="form-control"  name="username" id="username" placeholder="Usename" [(ngModel)]="user.username" required>
+          </div>
+          <div class="form-group">
+            <label >Email</label>
+            <input  type="email" class="form-control" id="email"  name="email" [(ngModel)]="user.email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <label >Mot de Passse</label>
+            <input type="password" class="form-control"  name="password"  id="password" [(ngModel)]="user.password" placeholder="Mot de passe" required>
+          </div>
+          <div class="form-group">
+            <label >Role:</label>
+            <select class="form-control"  name="role"  [(ngModel)]="role" *ngIf="loadUser().role == 'RESPONSABLE'">
+              <option value="chefDepartement">Chef de departement</option>
+            
+              <option value="technicien">Technicien de maintenance</option>
+            </select>
+
+            <select class="form-control"  name="role"  [(ngModel)]="role" *ngIf="loadUser().role == 'CHEF_DEPARTEMENT'">
+              <option value="enseignant">Enseignant</option>
+
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button (click)="AddUser()" type="submit" class="btn btn-primary" >Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

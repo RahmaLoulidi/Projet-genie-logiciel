@@ -1,0 +1,56 @@
+
+
+
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+
+
+<div class="content-wrapper">
+
+   <div *ngIf="messageAdd" class="alert alert-success">{{ messageAdd }}</div>
+   <div *ngIf="messageEdit" class="alert alert-info">{{ messageEdit }}</div>
+   <div *ngIf="messageDelete" class="alert alert-danger">{{ messageDelete }}</div>
+
+    <!-- AFFICHAGE DES APPELS D OFFRE NON ENCORE AFFECTEES A UN FOURNISSEUR -->
+    <div class="card">
+      <div class="card-header">               
+         <h5 class="card-header-text">Consulter</h5><tr></tr><code>Vos propositions</code>
+      </div>
+        <div class="card-block">
+           <div class="row">
+              <div class="col-sm-12 table-responsive">
+                 <table class="table table-hover">
+                    <thead>
+                       <tr>
+                          <th>#</th>
+                          <th>PRIX TOTAL</th>
+                          <th>APPEL OFFRE</th>
+                          <th>ETAT</th>
+                          <th>DETAILS</th>
+                       </tr>
+                    </thead>
+        
+                    <tbody>
+                       <tr *ngFor="let proposition of propositions">
+                          <td>{{ proposition.id }}</td>
+                          <td>{{ proposition.prixTotal}}</td>
+                          <td>{{ proposition.appelOffre.toString() }}</td>
+                          <td>{{ proposition.etat }}</td>
+
+
+                     <td> <button type="submit" class="btn btn-success waves-effect waves-light" routerLink="/proposition/fournisseur/details/{{ proposition.id }}" >Voir détails</button></td>
+               
+                       </tr>
+                    </tbody>
+                 </table>
+              </div>
+           </div>
+        </div>
+    </div>
+
+       <!-- <div *ngIf="user">
+      <p>ID du user: {{ user.id }}</p>
+    </div> -->
+
+</div>

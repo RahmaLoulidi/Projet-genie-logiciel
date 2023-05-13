@@ -1,0 +1,95 @@
+<app-header></app-header>
+    <app-side-navbar></app-side-navbar>
+    <app-side-bar-chat></app-side-bar-chat>
+<div class="content-wrapper">
+  <!-- Container-fluid starts -->
+  <div class="container-fluid notifications">
+     <!-- Main content starts -->
+     <div class="btn-page">
+        <!-- Row Starts -->
+        <div class="row">
+           <div class="col-lg-12 p-0">
+              <div class="main-header">
+                 <h4>Besoins Affectations</h4>
+                 
+              </div>
+           </div>
+        </div>
+
+   <div>
+   <label for="type">Type:</label>
+   <select class="form-control" id="type" (change)="onTypeChange($event)"  name="type" formControlName="type" style="width: 200px;" >
+     <option>Ordinateur</option>
+     <option>Imprimante</option>
+   </select>
+   </div>
+   <br>
+   
+
+   <!-- Tab panes -->
+   
+      <div class="tab-pane active" id="home3" role="tabpanel">
+      <!-- Basic Table starts -->
+      <div class="container" id="main-container">
+         <div class="card">
+        
+                     <table class="table" *ngIf="showOrdianteurInputs == 'Ordinateur' ">
+                        <thead>
+                           <tr>
+                              <th>Marque</th>
+                              <th>CPU</th>
+                              <th>Disque dur</th>
+                              <th>Ecran</th>
+                              <th>RAM</th>
+                              <th>Enseignant</th>
+                              <th>Envoie</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr *ngFor="let besoinO of ordinateurs">
+                              <td>{{besoinO.marque}}</td>
+                              <td>{{besoinO.cpu}}</td>
+                              <td>{{besoinO.disqueDur}}</td>
+                              <td>{{besoinO.ecran}}</td>
+                              <td>{{besoinO.ram}}</td>
+                              <td>{{besoinO.username}}</td>
+
+                              <td> <button (click)="onSend(besoinO.id)" type="submit" class="btn waves-effect waves-light" [ngClass]="besoinO.envoie ? 'btn-danger' : 'btn-success'" >{{ besoinO.envoie ? 'Besoin envoyé' : 'Envoyer besoin' }}</button></td>
+                        
+              
+                              <!--<td><a class="btn btn-primary tooltips" (click)="onOpenModal(besoin, 'add')">Ajouter<span class="sr-only">(current)</span></a></td>-->
+                              
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table class="table" *ngIf="showOrdianteurInputs == 'Imprimante' ">
+                        <thead>
+                           <tr>
+                              <th>Marque</th>
+                              <th>Resolution</th>
+                              <th>Vitesse</th>
+                              <th>Enseignant</th>
+                              <th>Envoie</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr *ngFor="let besoinI of imprimantes">
+                              <td>{{besoinI.marque}}</td>
+                              <td>{{besoinI.resolution}}</td>
+                              <td>{{besoinI.vitesse}}</td>
+                              <td>{{besoinI.username}}</td>
+                     
+
+                              <td> <button (click)="onSend(besoinI.id)" type="submit" class="btn waves-effect waves-light" [ngClass]="besoinI.envoie ? 'btn-danger' : 'btn-success'" >{{ besoinI.envoie ? 'Besoin envoyé' : 'Envoyer besoin' }}</button></td>
+                        
+              
+                           </tr>
+                        </tbody>
+                     </table>
+
+   
+            
+         </div>
+      </div>  
+   </div>
+      

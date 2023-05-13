@@ -1,0 +1,53 @@
+
+
+
+
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+
+
+
+<div class="content-wrapper">
+      
+
+
+
+<div class="card">
+   <div class="card-header">               
+      <h5 class="card-header-text">Appels d'Offres</h5><p>N'hésitez pas à soumettre <code>vos proposition</code> !!</p>
+   </div>
+   <div class="card-block">
+      <div class="row">
+         <div class="col-sm-12 table-responsive">
+            <table class="table table-hover">
+               <thead>
+                  <tr>
+                     <th>#</th>
+                     <th>DATE DEBUT</th>
+                     <th>DATE FIN</th>
+                     <th>PROPOSITION</th>
+                  </tr>
+               </thead>
+   
+               <tbody>
+                  <tr *ngFor="let appelOffre of appelOffreByFournisseurIdNull">
+                     <td>{{ appelOffre.id }}</td>
+                     <td>{{ appelOffre.dateDebut}}</td>
+                     <td>{{ appelOffre.dateFin}}</td>
+            
+                     <td> <button type="submit" class="btn btn-success waves-effect waves-light" routerLink="/proposition/appelOffre/{{appelOffre.id}}" >Ajouter</button></td>
+               
+                  </tr> 
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- <div *ngIf="user">
+   <p>ID du user: {{ user.id }}</p>
+ </div> -->
+ 
+</div>

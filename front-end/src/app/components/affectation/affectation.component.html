@@ -1,0 +1,239 @@
+<app-header></app-header>
+    <app-side-navbar></app-side-navbar>
+    <app-side-bar-chat></app-side-bar-chat>
+<div class="content-wrapper">
+  <!-- Container-fluid starts -->
+  <div class="container-fluid notifications">
+     <!-- Main content starts -->
+     <div class="btn-page">
+        <!-- Row Starts -->
+        <div class="row">
+           <div class="col-lg-12 p-0">
+              <div class="main-header">
+     
+                 
+              </div>
+           </div>
+        </div>
+
+
+    
+<!-- Tab panes -->
+
+    <h3>Liste des ressources</h3>
+    <br>
+    <!-- Tab panes -->
+
+   <div class="tab-pane active" id="home3" role="tabpanel">
+   <!-- Basic Table starts -->
+   <div class="card">
+       <div class="card-header">
+          <h5 class="card-header-text">Ressources</h5>
+       </div>
+       <div class="card-block">
+          <div class="row">
+             <div class="col-sm-12 table-responsive">
+                <table class="table">
+                   <thead>
+                      <tr>
+                         <th>Code Barre</th>
+                         <th>Détails de la ressource</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                     <tr *ngFor="let ordinateur of ordinateurs">
+                       <td>{{ordinateur.codeBarre}}</td>
+                       <td><b>Date Livraison:</b> {{ordinateur.dateLivraison}} <br>
+                           <b>Durée de garantie</b>{{ordinateur.dureeGarantie}} <br>
+                           <b>Marque:</b> {{ordinateur.marque}} <br>
+                           <b>CPU: </b>{{ordinateur.cpu}} <br>
+                           <b>Disque dur:</b> {{ordinateur.disqueDur}} <br>
+                           <b>Ecran:</b> {{ordinateur.ecran}} <br>
+                           <b>Ram:</b> {{ordinateur.ram}} <br>
+
+                       
+                       </td>
+                     </tr>
+                     <tr *ngFor="let imprimante of imprimantes">
+                       <td>{{imprimante.codeBarre}}</td>
+                       <td><b>Date Livraison:</b> {{imprimante.dateLivraison}} <br>
+                           <b>Durée de garantie: </b>{{imprimante.dureeGarantie}} <br>
+                           <b>Marque:</b> {{imprimante.marque}} <br>
+                           <b>Résolution:</b> {{imprimante.resolution}} <br>
+                           <b>Vitesse:</b> {{imprimante.vitesse}} <br>
+                         
+                       
+                       </td>
+                     </tr>
+
+                   </tbody>
+                </table>
+             </div>
+          </div>
+       </div>
+  </div>
+
+    <h3>Liste des besoins</h3>
+    <br>
+    <div class="tab-pane active" id="home3" role="tabpanel">
+    <!-- Basic Table starts -->
+   
+    <div class="card">
+        <div class="card-header">
+           <h5 class="card-header-text">Besoins</h5>
+        </div>
+        <div class="card-block">
+           <div class="row" id="main-container">
+              <div class="col-sm-12 table-responsive">
+                 <table class="table">
+                    <thead>
+                       <tr>
+                          <th>Enseignant</th>
+                          <th>Besoins</th>
+                          <th>Action</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let besoin of besoins">
+                        <td>{{besoin.enseignant}}</td>
+                        <ng-container *ngIf="besoin.type === 'Ordinateur'">
+                        <td><b>Marque:</b> {{besoin.marque}} <br>
+                            <b>CPU: </b>{{besoin.cpu}} <br>
+                            <b>Disque dur:</b> {{besoin.disqueDur}} <br>
+                            <b>Ecran:</b> {{besoin.ecran}} <br>
+                            <b>Ram:</b> {{besoin.ram}} <br>
+                       
+                        
+                        </td>
+                    </ng-container>
+                    <ng-container *ngIf="besoin.type === 'Imprimante'">
+                        <td><b>Marque:</b> {{besoin.marque}} <br>
+                            <b>Résolution: </b>{{besoin.resolution}} <br>
+                            <b>Vitesse:</b> {{besoin.vitesse}} <br>
+                       
+                        
+                        </td>
+                    </ng-container>
+                    <td><a class="btn btn-primary tooltips" (click)="selectionnerBesoin(besoin)">Affecter<span class="sr-only">(current)</span></a></td>
+                      </tr>
+
+                    </tbody>
+                 </table>
+              </div>
+           </div>
+        </div>
+      </div>
+   </div>
+
+
+
+        <h3>Liste des affectations</h3>
+        <br>
+        <div class="tab-pane active" id="home3" role="tabpanel">
+        <!-- Basic Table starts -->
+       
+        <div class="card">
+            <div class="card-header">
+               <h5 class="card-header-text">Affectations</h5>
+            </div>
+            <div class="card-block">
+               <div class="row" id="main-container">
+                  <div class="col-sm-12 table-responsive">
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              <th>Date d'affectation</th>
+                              <th>Enseignant</th>
+                              <th>Code à barres de la ressource</th>
+                              <th>Action</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let aff of affectations">
+                            <td>{{aff.dateAffectation}}</td>
+                            <td>{{aff.enseignantEmail}}</td>
+                            <td>{{aff.ressourceCodeBarre}}</td>
+                           <td><button type="button" style="font-size: 15px;"  class="btn btn-inverse-primary waves-effect waves-light" (click)="onOpenModalD(affectationDto, 'edit')" >Modifier</button>
+                              <button type="button" style="margin-left: 10px; font-size: 15px;" class="btn btn-inverse-danger waves-effect waves-light"  >Supprimer</button>
+                           </td>
+                          </tr>
+    
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+   
+        </div>
+        </div>
+
+      </div>
+   </div>
+   </div>
+</div>
+
+       <!-- Add Affectaion Modal -->
+<div class="modal fade" id="addAffectationModal" tabindex="-1" role="dialog" aria-labelledby="addAffectationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="addAffectationModalLabel">Ajouter Affectation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #addAffectation="ngForm" (ngSubmit)="onAddAffectation(addAffectation)">
+             <div class="form-group">
+             
+               <label for="dateAffectation">Date d'affectation</label>
+               <input type="date" class="form-control" [(ngModel)]="affectation.dateAffectation" name="dateAffectation" id="dateAffectation" placeholder="Date d'effectation" required>
+            </div>
+            <div class="form-group">
+               <label for="ressource">Ressource:</label>
+               <select class="form-control" [(ngModel)]="affectation.ressourceId" id="ressource" name="ressource">
+                 <option *ngFor="let ressource of ressources" [value]="ressource.id">{{ressource.codeBarre}}</option>
+               </select>
+
+            </div>
+          
+            <div class="modal-footer">
+               <button [disabled]="addAffectation.invalid" type="submit" class="btn btn-primary" >Enregistrer</button>
+            </div>
+            </form>
+         </div>
+      </div>
+    </div>
+    </div>
+ 
+    
+
+<!--Edit Ordinateur Modal-->
+
+<div class="modal fade" id="updateAffectationDtoModal" tabindex="-1" role="dialog" aria-labelledby="updateAffectationDtoModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+         <h5 class="modal-title" id="updateAffectationDtoModalLabel">Modifier l'Affectation: {{editAffectationDto.enseignantEmail}}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #updateAffectationDto="ngForm">
+            <div class="form-group">
+              
+           </div>
+           <div class="form-group">
+              
+           </div>
+           <div class="modal-footer">
+              <button [disabled]="updateAffectationDto.invalid" type="submit" class="btn btn-primary" >Enregistrer</button>
+           </div>
+           </form>
+        </div>
+     </div>
+   </div>
+   </div>
+
+ 

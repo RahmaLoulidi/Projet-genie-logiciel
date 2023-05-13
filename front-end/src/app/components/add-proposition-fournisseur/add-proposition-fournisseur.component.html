@@ -1,0 +1,154 @@
+
+
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+
+
+
+<div class="content-wrapper">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-12 p-0">
+         <h4>Soumettre Proposition</h4>
+         <!-- <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+            <li class="breadcrumb-item">
+               <a href="index.html">
+                  <i class="icofont icofont-home"></i>
+               </a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Tables</a>
+            </li>
+            <li class="breadcrumb-item"><a href="basic-table.html">Basic Table</a>
+            </li>
+         </ol> -->
+      </div>
+   </div>
+      </div>
+
+
+      
+<form (ngSubmit)="ajouterProposition()" #ajouterPropositionForm="ngForm">
+   
+   <div class="card">
+      <div class="card-header">               
+         <h5 class="card-header-text"></h5><p>Ordinateurs</p>
+      </div>
+      <div class="card-block">
+         <div class="row">
+            <div class="col-sm-12 table-responsive">
+               <table class="table table-hover">
+                  <thead>
+                     <tr>
+                        <th>CPU</th>
+                        <th>DISQUE DUR</th>
+                        <th>RAM</th>
+                        <th>MARQUE</th>
+                        <th>ECRAN</th>
+                        <th scope="col">MARQUE</th>
+                        <th scope="col">PRIX</th>
+                     </tr>
+                  </thead>
+      
+                  <tbody>
+                     <tr *ngFor="let ordinateur of besoinsOrdinateurs; let i = index">
+                        <td>{{ ordinateur.cpu }}</td>
+                         <td>{{ ordinateur.disqueDur}}</td>
+                         <td>{{ ordinateur.ram}}</td>
+                         <td>{{ ordinateur.marque}}</td>
+                         <td>{{ ordinateur.ecran}}</td>
+                         <td>
+                          <input type="text" class="form-control" name="marque{{i}}" [(ngModel)]="besoinsProposeOrdinateur[i].marque" required>
+                         </td>
+                         <td>
+                          <input type="number" class="form-control" name="prix{{i}}" [(ngModel)]="besoinsProposeOrdinateur[i].prix" required>
+                         </td>
+                      </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+
+
+
+   <div class="card">
+      <div class="card-header">               
+         <h5 class="card-header-text"></h5><p>Imprimantes</p>
+      </div>
+      <div class="card-block">
+         <div class="row">
+            <div class="col-sm-12 table-responsive">
+               <table class="table table-hover">
+                  <thead>
+                     <tr>
+                        <th>VITESSE</th>
+                        <th>RESOLUTION</th>
+                        <th>MARQUE</th>
+                        <th scope="col">MARQUE</th>
+                        <th scope="col">PRIX</th>
+                     </tr>
+                  </thead>
+      
+                  <tbody>
+                     <tr *ngFor="let imprimante of besoinsImprimantes; let ii = index">
+                        <td>{{ imprimante.vitesse }}</td>
+                        <td>{{ imprimante.resolution}}</td>
+                        <td>{{ imprimante.marque}}</td>
+                        <td>
+                         <input type="text" class="form-control" name="marque{{ii}}" [(ngModel)]="besoinsProposeImprimante[ii].marque" required>
+                        </td>
+                        <td>
+                         <input type="number" class="form-control" name="prix{{ii}}" [(ngModel)]="besoinsProposeImprimante[ii].prix" required>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <button type="submit" class="btn btn-inverse-info float-right waves-effect" [disabled]="ajouterPropositionForm.invalid">Ajouter</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   <!-- <div *ngIf="user">
+      <p>ID du user: {{ user.id }}</p>
+    </div> -->
+</div>
+
+
+
+
+
+
+
+
+

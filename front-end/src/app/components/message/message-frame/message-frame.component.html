@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card my-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-8">
+              <h5 class="card-title">{{message.subject}} </h5>
+              <p class="card-text">{{message.content}}</p>
+            </div>
+            <div class="col-sm-4">
+              <ul class="list-unstyled">
+                <li *ngIf="receivedMessage" class="text-muted">De: <a href="#">{{message.emetteur.username}} </a></li>
+                <li *ngIf="!receivedMessage" class="text-muted">A: <a href="#">{{message.recepteurs[0].username}} </a></li>
+                <!-- this dropdown will show when the user hover over the receiver's name, it has the list of other receivers -->
+                <li class="dropdown" *ngIf="!receivedMessage">
+                  <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">+{{message.recepteurs.length - 1}} <span class="caret"></span></a>
+                  <ul class="dropdown-menu" *ngFor=" let recepteur of message.recepteurs">
+                    <li><a href="#">{{recepteur.username}} </a></li>
+                  </ul>
+
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <a *ngIf="receivedMessage && !message.seen" (click)="setSeen()" href="/messages" class="">Marquer comme lu</a>
+              <span *ngIf="!receivedMessage && message.seen == 1" class="text-muted">Vu</span>
+              <span *ngIf="!receivedMessage && !message.seen" class="text-muted">Envoyé</span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

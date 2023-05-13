@@ -1,0 +1,46 @@
+.black-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+  }
+
+  .success-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+  }
+
+  .danger-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+  }
+
+button.success-btn:active,
+button.danger-btn:active,
+button.black-btn:active {
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+button.active {
+  background-color: gray;
+  color: white;
+}

@@ -1,0 +1,218 @@
+
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+<div class="content-wrapper">  <br><br><br>                            
+   <!-- <ul class="nav nav-tabs md-tabs" role="tablist">
+      <li class="nav-item">
+         <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">Ordinateur</a>
+         <div class="slide"></div>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">Imprimante</a>
+         <div class="slide"></div>
+      </li>         
+   </ul> -->
+   <h3>Ordinateurs</h3>
+   <br>
+   <!-- Tab panes -->
+   <div class="tab-content">
+      <div class="tab-pane active" id="home3" role="tabpanel">
+      <!-- Basic Table starts -->
+         <div class="card">
+            <div class="card-block">
+             
+               <div class="row" id="main-container">
+                  <div class="col-sm-12 table-responsive">
+                    
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              <th>ID</th>
+                              <th>Code à barre</th>
+                              <th>Durée de garantie</th>
+                              <th>Date de livraison</th>
+                              <th>Marque</th>
+                              <th>CPU</th>
+                              <th>Disque dur</th>
+                              <th>Ecran</th>
+                              <th>RAM</th>
+                              <th>Action</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr *ngFor="let ordinateur of ordinateurs">
+                              <td>{{ordinateur.id}}</td>
+                              <td>{{ordinateur.codeBarre}}</td>
+                              <td>{{ordinateur.dureeGarantie}}</td>
+                              <td>{{ordinateur.dateLivraison}}</td>
+                              <td>{{ordinateur.marque}}</td>
+                              <td>{{ordinateur.cpu}}</td>
+                              <td>{{ordinateur.disqueDur}}</td>
+                              <td>{{ordinateur.ecran}}</td>
+                              <td>{{ordinateur.ram}}</td>
+                              <td> <button type="button" style="font-size: 15px;"  class="btn btn-inverse-primary waves-effect waves-light" (click)="onOpenModal(ordinateur, 'edit')">Modifier</button>
+                                 <button type="button" style="margin-left: 10px; font-size: 15px;" class="btn btn-inverse-danger waves-effect waves-light" (click)="onOpenModal(ordinateur, 'delete')">Supprimer</button>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>     
+  </div>
+   <h3>Imprimantes</h3>
+   <br>
+   <div class="tab-pane" id="profile3" role="tabpanel">
+      <!-- Basic Table starts -->
+      <div class="card">
+      <div class="card-block">
+         <div class="row" id="main-container">
+            <div class="col-sm-12 table-responsive">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>Code à barre</th>
+                        <th>Durée de garantie</th>
+                        <th>Date de livraison</th>
+                        <th>Marque</th>
+                        <th>Résolution</th>
+                        <th>Vitesse</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let imprimante of imprimantes">
+                        <td>{{imprimante.codeBarre}}</td>
+                        <td>{{imprimante.dureeGarantie}}</td>
+                        <td>{{imprimante.dateLivraison}}</td>
+                        <td>{{imprimante.marque}}</td>
+                        <td>{{imprimante.resolution}}</td>
+                        <td>{{imprimante.vitesse}}</td>
+                        <td> <button type="button" style="font-size: 15px;"  class="btn btn-inverse-primary waves-effect waves-light" (click)="onOpenModalI(imprimante, 'edit')" >Modifier</button>
+                           <button type="button" style="margin-left: 10px; font-size: 15px;" class="btn btn-inverse-danger waves-effect waves-light" (click)="onOpenModalI(imprimante, 'delete')">Supprimer</button>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+
+
+
+<!--Edit Ordinateur Modal-->
+
+ <div class="modal fade" id="updateOrdinateurModal" tabindex="-1" role="dialog" aria-labelledby="updateOrdinateurModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+         <h5 class="modal-title" id="updateOrdinateurModalLabel">Modifier l'ordinateur: {{editOrdinateur.codeBarre}}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #updateOrdinateur="ngForm" (ngSubmit)="onUpdateOrdinateur()">
+            <div class="form-group">
+              <label for="codeBarre">Durée de garantie</label>
+              <input type="text" class="form-control" [(ngModel)]="editOrdinateur.dureeGarantie" name="codeBarre" id="codeBarre" placeholder="CodeBarre" required>
+           </div>
+           <div class="form-group">
+              <label for="dateLivraison">Date Livraison</label>
+              <input class="form-control" type="text" id="dateLivraison" [(ngModel)]="editOrdinateur.dateLivraison" name="dateLivraison" >
+           </div>
+           <div class="modal-footer">
+              <button [disabled]="updateOrdinateur.invalid" type="submit" class="btn btn-primary" >Enregistrer</button>
+           </div>
+           </form>
+        </div>
+     </div>
+   </div>
+   </div>
+
+
+
+   <!--Edit Imprimante Modal-->
+
+ <div class="modal fade" id="updateImprimanteModal" tabindex="-1" role="dialog" aria-labelledby="updateImprimanteModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+         <h5 class="modal-title" id="updateImprimanteModalLabel">Modifier l'imprimante: {{editImprimante.codeBarre}}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+           
+        </div>
+        <div class="modal-body">
+           <form #updateImprimante="ngForm" (ngSubmit)="onUpdateImprimante()">
+            <div class="form-group">
+              <label for="codeBarre">Durée de garantie</label>
+              <input type="text" class="form-control" [(ngModel)]="editImprimante.dureeGarantie" name="codeBarre" id="codeBarre" placeholder="CodeBarre" required>
+           </div>
+           <div class="form-group">
+              <label for="dateLivraison">Date Livraison</label>
+              <input class="form-control" type="text" id="dateLivraison" [(ngModel)]="editImprimante.dateLivraison" name="dateLivraison" >
+           </div>
+           <div class="modal-footer">
+              <button [disabled]="updateImprimante.invalid" type="submit" class="btn btn-primary" >Enregistrer</button>
+           </div>
+           </form>
+        </div>
+     </div>
+   </div>
+   </div>
+
+
+   <!-- Delete Modal Ordinateur -->
+<div class="modal fade" id="deleteOrdinateurModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="deleteModelLabel">Supprimer Ordinateur</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <p> Voulez-vous vraiment supprimer cet ordinateur {{deleteOrdinateur.codeBarre}} ?</p>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+               <button style="margin-left: 5px;" (click)="onDeleteOrdinateur(deleteOrdinateur.id)" class="btn btn-danger" data-dismiss="modal">Oui</button>
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+ 
+
+ <!-- Delete Modal Imprimante -->
+<div class="modal fade" id="deleteImprimanteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="deleteModelLabel">Supprimer Imprimante</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <p> Voulez-vous vraiment supprimer cette imprimante {{deleteImprimante.codeBarre}} ?</p>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+               <button style="margin-left: 5px;" (click)="onDeleteImprimante(deleteImprimante.id)" class="btn btn-danger" data-dismiss="modal">Oui</button>
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>

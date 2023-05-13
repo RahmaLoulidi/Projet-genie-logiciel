@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FrontEnd</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+
+
+
+
+
+
+
+
+
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+
+  <!-- themify -->
+  <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+
+  <!-- iconfont -->
+  <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+
+  <!-- simple line icon -->
+  <link rel="stylesheet" type="text/css" href="assets/icon/simple-line-icons/css/simple-line-icons.css">
+
+  <!-- Required Fremwork -->
+  <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Chartlist chart css -->
+  <link rel="stylesheet" href="assets/plugins/chartist/dist/chartist.css" type="text/css" media="all">
+
+  <!-- Weather css -->
+  <link href="assets/css/svg-weather.css" rel="stylesheet">
+
+
+  <!-- Style.css -->
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+  <!-- Responsive.css-->
+  <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+
+
+  <!--************************* ACCEUIL **************************** -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Gestion Matériel</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+</head>
+<body class="sidebar-mini fixed">
+
+  <app-root>
+
+    <app-header></app-header>
+    <app-side-navbar></app-side-navbar>
+    <app-side-bar-chat></app-side-bar-chat>
+
+  </app-root>
+ </div>
+
+
+
+ <!-- ****************** ACCEUIL ******************** -->
+ <script src="vendor/jquery/jquery.min.js"></script>
+ <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+ <script src="assets/js/isotope.min.js"></script>
+ <script src="assets/js/owl-carousel.js"></script>
+ <script src="assets/js/lightbox.js"></script>
+ <script src="assets/js/tabs.js"></script>
+ <script src="assets/js/video.js"></script>
+ <script src="assets/js/slick-slider.js"></script>
+ <script src="assets/js/custom.js"></script>
+  <script src="assets/plugins/Jquery/dist/jquery.min.js"></script>
+  <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="assets/plugins/tether/dist/js/tether.min.js"></script>
+
+
+
+  <!-- Required Fremwork -->
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Scrollbar JS-->
+  <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+  <script src="assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+
+  <!--classic JS-->
+  <script src="assets/plugins/classie/classie.js"></script>
+
+  <!-- notification -->
+  <script src="assets/plugins/notification/js/bootstrap-growl.min.js"></script>
+
+  <!-- Sparkline charts -->
+  <script src="assets/plugins/jquery-sparkline/dist/jquery.sparkline.js"></script>
+
+  <!-- Counter js  -->
+  <script src="assets/plugins/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/plugins/countdown/js/jquery.counterup.js"></script>
+
+  <!-- Echart js -->
+  <script src="assets/plugins/charts/echarts/js/echarts-all.js"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+  <!-- custom js -->
+  <script type="text/javascript" src="assets/js/main.min.js"></script>
+  <script type="text/javascript" src="assets/pages/dashboard.js"></script>
+  <script type="text/javascript" src="assets/pages/elements.js"></script>
+  <script src="assets/js/menu.min.js"></script>
+
+
+
+
+
+<script>
+var $window = $(window);
+var nav = $('.fixed-button');
+$window.scroll(function(){
+   if ($window.scrollTop() >= 200) {
+      nav.addClass('active');
+   }
+   else {
+      nav.removeClass('active');
+   }
+});
+</script>
+
+
+<!-- ****************** ACCEUIL ******************** -->
+   <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+          e.preventDefault();
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+</body>
+</html>

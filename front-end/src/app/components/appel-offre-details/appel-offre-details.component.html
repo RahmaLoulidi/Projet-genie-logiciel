@@ -1,0 +1,189 @@
+
+<app-header></app-header>
+<app-side-navbar></app-side-navbar>
+<app-side-bar-chat></app-side-bar-chat>
+
+
+<div class="content-wrapper">
+   <div class="card-header">               
+      <h5 class="card-header-text">Details</h5><tr></tr><code>Appel Offre {{ appelOffre.id }}</code>
+   </div>
+
+ 
+      
+   <div class="col-xl-11 col-lg-12 grid-item">
+      <div class="card">
+         <div class="card-block horizontal-card-img d-flex">
+            <div class="d-inlineblock  p-l-20">
+            <h6>Date debut</h6>
+            <a href="#">{{appelOffre.dateDebut}}</a>
+         </div>
+         <h6 class="txt-danger rotate-txt">Debut</h6>
+         </div>
+      </div>
+   </div>
+   
+   
+   <div class="col-xl-11 col-lg-12 grid-item">
+      <div class="card">
+         <div class="card-block horizontal-card-img d-flex">
+            <div class="d-inlineblock  p-l-20">
+            <h6>Date fin</h6>
+            <a href="#">{{appelOffre.dateFin}}</a>
+         </div>
+            <h6 class="txt-danger rotate-txt">Fin</h6>
+         </div>
+      </div>
+   </div>
+ 
+
+
+
+
+
+
+
+   <div class="col-xl-11 col-lg-12">
+      <div class="card">
+       <div _ngcontent-gab-c19="" class="card-header"><h5 _ngcontent-gab-c19="" class="card-header-text"></h5><p _ngcontent-gab-c19="">Besoins Ordinateurs</p></div>
+         <div class="card-block">
+            <div class="table-responsive">
+               <table class="table m-b-0 photo-table">
+                  <thead>
+                     <tr class="text-uppercase">
+                        <th>CPU</th>
+                        <th>DISQUE DUR</th>
+                        <th>RAM</th>
+                        <th>MARQUE</th>
+                        <th>ECRAN</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let ordinateur of ordinateursAffectes">
+                        <td>{{ ordinateur.cpu }}</td>
+                        <td>{{ ordinateur.disqueDur }}</td>
+                        <td>{{ ordinateur.ram }}</td>
+                        <td>{{ ordinateur.marque }}</td>
+                        <td>{{ ordinateur.ecran }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+    </div>
+
+    
+
+    <div class="col-xl-11 col-lg-12">
+      <div class="card">
+         <div _ngcontent-gab-c19="" class="card-header"><h5 _ngcontent-gab-c19="" class="card-header-text"></h5><p _ngcontent-gab-c19="">Besoins Imprimantes</p></div>
+         <div class="card-block">
+            <div class="table-responsive">
+               <table class="table m-b-0 photo-table">
+                  <thead>
+                     <tr class="text-uppercase">
+                        <th>VITESSE</th>
+                        <th>RESOLUTION</th>
+                        <th>MARQUE</th>
+
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let imprimante of imprimantesAffectes">
+                        <td>{{ imprimante.vitesse }}</td>
+                        <td>{{ imprimante.resolution }}</td>
+                        <td>{{ imprimante.marque }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+    </div>
+
+
+    
+
+
+
+
+
+
+ <div class="container" id="main-container">
+ <!-- Edit Modal -->
+ <div class="modal fade" id="updateAppelOffreModal" tabindex="-1" role="dialog" aria-labelledby="appelOffreEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="updateAppelOffreModalLabel">Modifier Appel Offre {{ appelOffre.id }}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #editForm="ngForm">
+              <div class="form-group">
+                  <label for="dateDebut">Date Debut</label>
+                  <input type="date" [(ngModel)]="appelOffre.dateDebut" #dateDebut name="dateDebut" class="form-control" id="dateDebut" aria-describedby="emailHelp" placeholder="Date Debut" [value]="appelOffre.dateDebut">
+                </div>
+              
+               
+                <!-- <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+              <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email"> -->
+             <div class="form-group">
+                  <label for="dateFin">Date Fin</label>
+                  <input type="date" [(ngModel)]="appelOffre.dateFin" #dateFin name="dateFin" class="form-control" id="dateFin" placeholder="Date Fin">
+              </div>
+
+              
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancel()">Cancel</button>
+
+           </form>
+
+        </div>
+     </div>
+  </div>
+</div> 
+
+
+
+
+
+<div class="container" id="main-container">
+   <!-- delete Modal -->
+   <div class="modal fade" id="deleteAppelOffreModal" tabindex="-1" role="dialog" aria-labelledby="AppelOffreEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+      <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title">Supprimer AppelOffre</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+            <form #editForm="ngForm">
+
+           <p>Etes vous sur de supprimer l' appel d'offre {{ appelOffre.id }} ??</p>
+
+            </form>
+
+         </div>
+         <div class="modal-footer">
+            <!-- <button (click)="appelOffre.id && onDeleteAppelOffre(appelOffre.id)" type="submit" class="btn btn-danger waves-effect waves-light">Oui</button> -->
+           <button type="button" class="btn btn-flat flat-primary txt-primary waves-effect waves-light" data-dismiss="modal">Non</button>
+         </div>
+       </div>
+
+</div>
+
+  
+</div>
+</div>
+
+
+
+
+  
